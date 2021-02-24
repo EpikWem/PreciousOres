@@ -1,7 +1,7 @@
 {
 	"variants": {
 		"": {
-			"model": "tutorialmod:block/silver_block"
+			"model": "preciousores:block/silver_block"
 		}
 	}
 }
