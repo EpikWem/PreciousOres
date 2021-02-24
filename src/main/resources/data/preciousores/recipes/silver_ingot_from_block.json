@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "silver_ingot",
+	"ingredients": [
+		{
+			"item": "preciousores:silver_block"
+		}
+	],
+	"result": {
+		"item": "preciousores:silver_ingot",
+		"count": 9
+	}
+}
