@@ -9,6 +9,8 @@ import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.common.ToolType;
 
+import static com.epikwem.preciousores.Main.setup;
+
 public enum ModOreItemTier implements IItemTier {
 
     SILVER ("silver", 2, 1254, 0.0f, 2, 0, Items.COAL, MaterialColor.LIGHT_GRAY, 6.0f, 3.0f, 1.0f);
@@ -39,38 +41,40 @@ public enum ModOreItemTier implements IItemTier {
         attackSpeed = _attackSpeed;
     }
 
-    public final Block block(boolean _wantOreBlock) {
+    public final Block setupBlock(boolean _wantOreBlock) {
         if (_wantOreBlock)
-            return new OreBlock( Block.Properties
+            return setup(oreName+"_ore", new OreBlock( Block.Properties
                     .create(Material.ROCK, color)
                     .hardnessAndResistance(hardness, 3.0f)
                     .harvestLevel(harvestLevel)
-                    .harvestTool(ToolType.PICKAXE) );
+                    .harvestTool(ToolType.PICKAXE) )
+            );
         else
-            return new Block( Block.Properties
+            return setup(oreName+"_block", new Block( Block.Properties
                 .create(Material.IRON, color)
                 .hardnessAndResistance(hardness+2.0f, blockResistance)
                 .harvestLevel(0)
-                .harvestTool(ToolType.PICKAXE) );
+                .harvestTool(ToolType.PICKAXE) )
+            );
     }
 
-    public final Item item() {
-        return new Item( new Item.Properties().group(ItemGroup.MATERIALS) );
+    public final Item setupItem(String _type) {
+        return setup(oreName+"_"+_type, new Item( new Item.Properties().group(ItemGroup.MATERIALS) ));
     }
 
-    public final Item tool(ToolType _toolType) {
+    public final Item setupTool(ToolType _toolType) {
         if (_toolType.equals(ToolType.PICKAXE))
-            return new PickaxeItem(this, 6, 1.0f, new Item.Properties().group(ItemGroup.TOOLS));
-        else if (_toolType.equals(ToolType.PICKAXE))
-            return new Item( new Item.Properties().group(ItemGroup.TOOLS) );
+            return setup(oreName+"_pickaxe", new PickaxeItem(this, 6, 1.0f, new Item.Properties().group(ItemGroup.TOOLS)));
+        else if (_toolType.equals(ToolType.AXE))
+            return setup(oreName+"_axe", new AxeItem(this, 6, 1.0f, new Item.Properties().group(ItemGroup.TOOLS)));
         else if (_toolType.equals(ToolType.SHOVEL))
-            return new Item( new Item.Properties().group(ItemGroup.TOOLS) );
+            return setup(oreName+"_shovel", new ShovelItem(this, 6, 1.0f, new Item.Properties().group(ItemGroup.TOOLS)));
         else
-            return new Item( new Item.Properties().group(ItemGroup.TOOLS) );
+            return setup(oreName+"_hoe", new HoeItem(this, 6, 1.0f, new Item.Properties().group(ItemGroup.TOOLS)));
     }
 
-    public final Item sword() {
-        return new SwordItem(this, 4, attackSpeed, new Item.Properties().group(ItemGroup.COMBAT));
+    public final Item setupSword() {
+        return setup(oreName+"_sword", new SwordItem(this, 4, attackSpeed, new Item.Properties().group(ItemGroup.COMBAT)));
     }
 
     public String getOreName() {

@@ -3,8 +3,13 @@ package com.epikwem.preciousores;
 import com.epikwem.preciousores.init.ModOreItemTier;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -15,6 +20,7 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -80,21 +86,43 @@ public class Main
     public static class RegistryEvents {
 
         @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
+        public static void onBlocksRegistry(final RegistryEvent.Register<Block> _blockRegistryEvent) {
             LOGGER.info("HELLO from Register Block");
-            blockRegistryEvent.getRegistry().registerAll(
-
+            _blockRegistryEvent.getRegistry().registerAll(
+                ModOreItemTier.SILVER.setupBlock(true),
+                ModOreItemTier.SILVER.setupBlock(false)
             );
             LOGGER.info("Block registering FINISHED");
+        }
+
+        @SubscribeEvent
+        public static void onItemsRegistry(final RegistryEvent.Register<Item> _itemRegistryEvent) {
+            LOGGER.info("HELLO from Register Item");
+            _itemRegistryEvent.getRegistry().registerAll(
+                ModOreItemTier.SILVER.setupItem("ingot"),
+                ModOreItemTier.SILVER.setupItem("nugget"),
+                ModOreItemTier.SILVER.setupSword(),
+                ModOreItemTier.SILVER.setupTool(ToolType.PICKAXE),
+                ModOreItemTier.SILVER.setupTool(ToolType.AXE),
+                ModOreItemTier.SILVER.setupTool(ToolType.SHOVEL),
+                ModOreItemTier.SILVER.setupTool(ToolType.HOE)
+            );
+            for (final Block block : ForgeRegistries.BLOCKS.getValues()) {
+                setup( block.getRegistryName(), new BlockItem(block, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)) );
+            }
+            LOGGER.info("Item registering FINISHED");
         }
 
     }
 
     // to register an entry (block, item...)
-    public static <T extends IForgeRegistryEntry<T>> T setup(final String name, final T entry) {
-        LOGGER.info("    setup("+ name+ ")");
-        return entry.setRegistryName(new ResourceLocation(Main.MODID, name));
+    public static <T extends IForgeRegistryEntry<T>> T setup(final String _name, final T _entry) {
+        LOGGER.info("    setup("+ _name+ ")");
+        return _entry.setRegistryName(new ResourceLocation(Main.MODID, _name));
+    }
+
+    private static <T extends IForgeRegistryEntry<T>> T setup(final ResourceLocation _registryName, final T _entry) {
+        return _entry.setRegistryName(_registryName);
     }
 
 }
