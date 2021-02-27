@@ -1,6 +1,7 @@
 
 package com.epikwem.preciousores.init;
 
+import com.epikwem.preciousores.Main;
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.material.Material;
@@ -8,6 +9,8 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.common.ToolType;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import static com.epikwem.preciousores.Main.setup;
 
@@ -39,6 +42,30 @@ public enum ModOreItemTier implements IItemTier {
         hardness = _hardness;
         blockResistance = _blockResistance;
         attackSpeed = _attackSpeed;
+    }
+
+    public final void setupAllBlocks(final RegistryEvent.Register<Block> _blockRegistryEvent) {
+        _blockRegistryEvent.getRegistry().registerAll(
+                ModOreItemTier.SILVER.setupBlock(true),
+                ModOreItemTier.SILVER.setupBlock(false)
+        );
+    }
+
+    public final void setupAllItems(final RegistryEvent.Register<Item> _itemRegistryEvent) {
+        _itemRegistryEvent.getRegistry().registerAll(
+                ModOreItemTier.SILVER.setupItem("ingot"),
+                ModOreItemTier.SILVER.setupItem("nugget"),
+                ModOreItemTier.SILVER.setupSword(),
+                ModOreItemTier.SILVER.setupTool(ToolType.PICKAXE),
+                ModOreItemTier.SILVER.setupTool(ToolType.AXE),
+                ModOreItemTier.SILVER.setupTool(ToolType.SHOVEL),
+                ModOreItemTier.SILVER.setupTool(ToolType.HOE)
+        );
+        for (final Block block : ForgeRegistries.BLOCKS.getValues()) {
+             final BlockItem blockItem = new BlockItem(block, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS));
+            blockItem.setRegistryName(block.getRegistryName());
+            _itemRegistryEvent.getRegistry().register(blockItem);
+        }
     }
 
     public final Block setupBlock(boolean _wantOreBlock) {
