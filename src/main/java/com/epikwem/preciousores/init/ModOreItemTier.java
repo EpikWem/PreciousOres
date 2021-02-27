@@ -1,7 +1,6 @@
 
 package com.epikwem.preciousores.init;
 
-import com.epikwem.preciousores.Main;
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.material.Material;
@@ -10,7 +9,8 @@ import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.registries.ForgeRegistries;
+
+import java.rmi.registry.LocateRegistry;
 
 import static com.epikwem.preciousores.Main.setup;
 
@@ -42,6 +42,25 @@ public enum ModOreItemTier implements IItemTier {
         hardness = _hardness;
         blockResistance = _blockResistance;
         attackSpeed = _attackSpeed;
+    }
+
+    public void setupAllBlocks(final RegistryEvent.Register<Block> _blockRegistryEvent) {
+        _blockRegistryEvent.getRegistry().registerAll(
+                this.setupBlock(true),
+                this.setupBlock(false)
+        );
+    }
+
+    public void setupAllItems(final RegistryEvent.Register<Item> _itemRegistryEvent) {
+        _itemRegistryEvent.getRegistry().registerAll(
+                this.setupItem("ingot"),
+                this.setupItem("nugget"),
+                this.setupSword(),
+                this.setupTool(ToolType.PICKAXE),
+                this.setupTool(ToolType.AXE),
+                this.setupTool(ToolType.SHOVEL),
+                this.setupTool(ToolType.HOE)
+        );
     }
 
     public final Block setupBlock(boolean _wantOreBlock) {

@@ -88,34 +88,21 @@ public class Main
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> _blockRegistryEvent) {
             LOGGER.info("HELLO from Register Block");
-            _blockRegistryEvent.getRegistry().registerAll(
-                    ModOreItemTier.SILVER.setupBlock(true),
-                    ModOreItemTier.SILVER.setupBlock(false)
-            );
+            ModOreItemTier.SILVER.setupAllBlocks(_blockRegistryEvent);
             LOGGER.info("Block registering FINISHED");
         }
 
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> _itemRegistryEvent) {
             LOGGER.info("HELLO from Register Item");
-            _itemRegistryEvent.getRegistry().registerAll(
-                    ModOreItemTier.SILVER.setupItem("ingot"),
-                    ModOreItemTier.SILVER.setupItem("nugget"),
-                    ModOreItemTier.SILVER.setupSword(),
-                    ModOreItemTier.SILVER.setupTool(ToolType.PICKAXE),
-                    ModOreItemTier.SILVER.setupTool(ToolType.AXE),
-                    ModOreItemTier.SILVER.setupTool(ToolType.SHOVEL),
-                    ModOreItemTier.SILVER.setupTool(ToolType.HOE)
-            );
+            ModOreItemTier.SILVER.setupAllItems(_itemRegistryEvent);
             for (final Block block : ForgeRegistries.BLOCKS.getValues()) {
-                final BlockItem blockItem = new BlockItem(block, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS));
-                blockItem.setRegistryName(block.getRegistryName());
-                _itemRegistryEvent.getRegistry().register(blockItem);
+                setup( block.getRegistryName(), new BlockItem(block, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)) );
             }
             LOGGER.info("Item registering FINISHED");
         }
 
-    } // end of RegistryEvent
+    } // end of RegistryEvent class
 
     // to register an entry (block, item...)
     public static <T extends IForgeRegistryEntry<T>> T setup(final String _name, final T _entry) {
