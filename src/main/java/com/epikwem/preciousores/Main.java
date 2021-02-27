@@ -97,7 +97,10 @@ public class Main
             LOGGER.info("HELLO from Register Item");
             ModOreItemTier.SILVER.setupAllItems(_itemRegistryEvent);
             for (final Block block : ForgeRegistries.BLOCKS.getValues()) {
-                setup( block.getRegistryName(), new BlockItem(block, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)) );
+                if (block.getRegistryName().getNamespace().equals(Main.MODID)) {
+                    final Item.Properties properties = new Item.Properties().group(ItemGroup.BUILDING_BLOCKS);
+                    setup( block.getRegistryName(), new BlockItem(block, properties) );
+                }
             }
             LOGGER.info("Item registering FINISHED");
         }
