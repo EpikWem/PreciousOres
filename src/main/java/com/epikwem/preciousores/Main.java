@@ -96,10 +96,12 @@ public class Main
         public static void onItemsRegistry(final RegistryEvent.Register<Item> _itemRegistryEvent) {
             LOGGER.info("HELLO from Register Item");
             ModOreItemTier.SILVER.setupAllItems(_itemRegistryEvent);
+            //setup("silver_ore", new BlockItem(ModOreItemTier.SILVER.setupBlock(true), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
+            //setup("silver_block", new BlockItem(ModOreItemTier.SILVER.setupBlock(false), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
             for (final Block block : ForgeRegistries.BLOCKS.getValues()) {
                 if (block.getRegistryName().getNamespace().equals(Main.MODID)) {
                     final Item.Properties properties = new Item.Properties().group(ItemGroup.BUILDING_BLOCKS);
-                    setup( block.getRegistryName(), new BlockItem(block, properties) );
+                    _itemRegistryEvent.getRegistry().register(setup( block.getRegistryName(), new BlockItem(block, properties) ));
                 }
             }
             LOGGER.info("Item registering FINISHED");
@@ -109,11 +111,11 @@ public class Main
 
     // to register an entry (block, item...)
     public static <T extends IForgeRegistryEntry<T>> T setup(final String _name, final T _entry) {
-        LOGGER.info("    setup("+ _name+ ")");
-        return _entry.setRegistryName(new ResourceLocation(Main.MODID, _name));
+        return setup(new ResourceLocation(Main.MODID, _name), _entry);
     }
 
     private static <T extends IForgeRegistryEntry<T>> T setup(final ResourceLocation _registryName, final T _entry) {
+        LOGGER.info("    setup("+ _registryName+ ")");
         return _entry.setRegistryName(_registryName);
     }
 
