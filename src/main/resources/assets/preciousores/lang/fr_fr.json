@@ -1,0 +1,14 @@
+
+{
+  "block.preciousores.silver_ore": "Minerai d'Argent",
+  "block.preciousores.silver_block": "Bloc d'Argent",
+
+  "item.preciousores.silver_ingot": "Lingot d'Argent",
+  "item.preciousores.silver_nugget": "Pépite d'Argent",
+  "item.preciousores.silver_sword": "Epée en Argent",
+  "item.preciousores.silver_pickaxe": "Pioche en Argent",
+  "item.preciousores.silver_axe": "Hache en Argent",
+  "item.preciousores.silver_shovel": "Pelle en Argent",
+  "item.preciousores.silver_hoe": "Houe en Argent"
+
+}
