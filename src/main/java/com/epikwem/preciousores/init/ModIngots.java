@@ -6,6 +6,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.event.RegistryEvent;
 
+import static com.epikwem.preciousores.Main.setup;
+
 public enum ModIngots {
 
     SILVER_INGOT("silver");
@@ -18,8 +20,11 @@ public enum ModIngots {
         item = new Item( new Item.Properties().group(ItemGroup.MATERIALS) );
     }
 
-    public void registerAllFeatures(final RegistryEvent.Register<Block> _blockRegistryEvent, final RegistryEvent.Register<Item> _itemRegistryEvent) {
-        
+    public void registerOreItems(final RegistryEvent.Register<Item> _itemRegistryEvent) {
+        _itemRegistryEvent.getRegistry().registerAll(
+                setup(oreName+"_ingot", item),
+                setup(oreName+"_nugget", item)
+        );
     }
 
     public String getOreName() {

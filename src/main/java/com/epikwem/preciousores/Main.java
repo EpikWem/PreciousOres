@@ -1,5 +1,8 @@
 package com.epikwem.preciousores;
 
+import com.epikwem.preciousores.init.ModIngots;
+import com.epikwem.preciousores.init.ModOreArmorMaterials;
+import com.epikwem.preciousores.init.ModOreBlockTiers;
 import com.epikwem.preciousores.init.ModOreItemTiers;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -86,16 +89,20 @@ public class Main
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> _blockRegistryEvent) {
             LOGGER.info("HELLO from Register Block");
-            ModOreItemTiers.SILVER.setupAllBlocks(_blockRegistryEvent);
+            for (final ModOreBlockTiers modOreBlockTier : ModOreBlockTiers.values())
+                modOreBlockTier.registerOreBlocks(_blockRegistryEvent);
             LOGGER.info("Block registering FINISHED");
         }
 
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> _itemRegistryEvent) {
             LOGGER.info("HELLO from Register Item");
-            ModOreItemTiers.SILVER.setupAllItems(_itemRegistryEvent);
-            //setup("silver_ore", new BlockItem(ModOreItemTiers.SILVER.setupBlock(true), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
-            //setup("silver_block", new BlockItem(ModOreItemTiers.SILVER.setupBlock(false), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
+            for (final ModIngots modIngot : ModIngots.values())
+                modIngot.registerOreItems(_itemRegistryEvent);
+            for (final ModOreItemTiers modOreItemTier : ModOreItemTiers.values())
+                modOreItemTier.registerOreTools(_itemRegistryEvent);
+            for (final ModOreArmorMaterials modOreArmorMaterial : ModOreArmorMaterials.values())
+                modOreArmorMaterial.registerOreArmors(_itemRegistryEvent);
             for (final Block block : ForgeRegistries.BLOCKS.getValues()) {
                 if (block.getRegistryName().getNamespace().equals(Main.MODID)) {
                     final Item.Properties properties = new Item.Properties().group(ItemGroup.BUILDING_BLOCKS);
