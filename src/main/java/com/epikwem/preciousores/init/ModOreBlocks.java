@@ -11,7 +11,7 @@ import net.minecraftforge.event.RegistryEvent;
 
 import static com.epikwem.preciousores.Main.setup;
 
-public enum ModOreBlockTiers {
+public enum ModOreBlocks {
 
     SILVER(ModIngots.SILVER_INGOT, MaterialColor.LIGHT_GRAY, 6.0f, 3.0f, 3);
 
@@ -21,7 +21,7 @@ public enum ModOreBlockTiers {
     private final float resistance;
     private final int harvestLevel;
 
-    ModOreBlockTiers(final ModIngots _oreIngot, final MaterialColor _color, final float _hardness, final float _resistance, final int _harvestLevel) {
+    ModOreBlocks(final ModIngots _oreIngot, final MaterialColor _color, final float _hardness, final float _resistance, final int _harvestLevel) {
         oreName = _oreIngot.getOreName();
         color = _color;
         hardness = _hardness;
@@ -46,6 +46,15 @@ public enum ModOreBlockTiers {
                         .harvestTool(ToolType.PICKAXE) )
             )
         );
+    }
+
+    public Block getOreBlock() {
+        return new OreBlock( Block.Properties
+                .create(Material.ROCK, color)
+                .sound(SoundType.NETHER_ORE)
+                .hardnessAndResistance(hardness, resistance)
+                .harvestLevel(harvestLevel)
+                .harvestTool(ToolType.PICKAXE) );
     }
 
 }

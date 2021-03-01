@@ -1,8 +1,9 @@
 package com.epikwem.preciousores;
 
+import com.epikwem.preciousores.world.generation.ModOreGeneration;
 import com.epikwem.preciousores.init.ModIngots;
 import com.epikwem.preciousores.init.ModOreArmorMaterials;
-import com.epikwem.preciousores.init.ModOreBlockTiers;
+import com.epikwem.preciousores.init.ModOreBlocks;
 import com.epikwem.preciousores.init.ModOreTools;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -49,11 +50,9 @@ public class Main
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void setupEvent(final FMLCommonSetupEvent event)
-    {
-        // some preinit code
+    private void setupEvent(final FMLCommonSetupEvent _event) {
+        ModOreGeneration.generateOres();
         LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -83,13 +82,13 @@ public class Main
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
 
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> _blockRegistryEvent) {
             LOGGER.info("HELLO from Register Block");
-            for (final ModOreBlockTiers modOreBlockTier : ModOreBlockTiers.values())
+            for (final ModOreBlocks modOreBlockTier : ModOreBlocks.values())
                 modOreBlockTier.registerOreBlocks(_blockRegistryEvent);
             LOGGER.info("Block registering FINISHED");
         }
