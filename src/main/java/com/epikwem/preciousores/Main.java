@@ -103,10 +103,13 @@ public class Main
                 modOreTool.registerOreTools(_itemRegistryEvent);
             for (final ModOreArmorMaterials modOreArmorMaterial : ModOreArmorMaterials.values())
                 modOreArmorMaterial.registerOreArmors(_itemRegistryEvent);
+            LOGGER.info("=====================================");
             for (final Block block : ForgeRegistries.BLOCKS.getValues()) {
                 if (block.getRegistryName().getNamespace().equals(Main.MODID)) {
                     final Item.Properties properties = new Item.Properties().group(ItemGroup.BUILDING_BLOCKS);
-                    _itemRegistryEvent.getRegistry().register(setup( block.getRegistryName(), new BlockItem(block, properties) ));
+                    _itemRegistryEvent.getRegistry().register(
+                        setup( block.getRegistryName(), new BlockItem(block, properties) )
+                    );
                 }
             }
             LOGGER.info("Item registering FINISHED");

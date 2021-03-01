@@ -23,7 +23,7 @@ public enum ModIngots {
     public void registerOreItems(final RegistryEvent.Register<Item> _itemRegistryEvent) {
         _itemRegistryEvent.getRegistry().registerAll(
                 setup(oreName+"_ingot", item),
-                setup(oreName+"_nugget", item)
+                setup(oreName+"_nugget", new Item(new Item.Properties().group(ItemGroup.MATERIALS)))
         );
     }
 
