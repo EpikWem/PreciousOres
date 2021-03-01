@@ -13,7 +13,7 @@ import net.minecraftforge.event.RegistryEvent;
 
 import static com.epikwem.preciousores.Main.setup;
 
-public enum ModOreItemTier implements IItemTier {
+public enum ModOreItemTiers implements IItemTier {
 
     SILVER ("silver",
             2,
@@ -39,7 +39,7 @@ public enum ModOreItemTier implements IItemTier {
     private final float blockResistance;
     private final float attackSpeed;
 
-    private ModOreItemTier(String _oreName, int _harvestLevel, int _maxUses, float _efficiency, int _attackDamage, int _enchantability, Item _repairItem, MaterialColor _color, float _hardness, float _blockResistance, float _attackSpeed) {
+    private ModOreItemTiers(String _oreName, int _harvestLevel, int _maxUses, float _efficiency, int _attackDamage, int _enchantability, Item _repairItem, MaterialColor _color, float _hardness, float _blockResistance, float _attackSpeed) {
         oreName = _oreName;
         harvestLevel = _harvestLevel;
         maxUses = _maxUses;

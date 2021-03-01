@@ -2,18 +2,13 @@
 package com.epikwem.preciousores.init;
 
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 
-import java.util.function.Supplier;
-
-public enum ModOreArmorMaterial implements IArmorMaterial {
+public enum ModOreArmorMaterials implements IArmorMaterial {
 
     SILVER("silver",
             18,
@@ -22,7 +17,7 @@ public enum ModOreArmorMaterial implements IArmorMaterial {
             SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
             1.0F,
             0.0F,
-            ModItems.SILVER_INGOT
+            ModIngots.SILVER_INGOT
     );
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
@@ -36,7 +31,7 @@ public enum ModOreArmorMaterial implements IArmorMaterial {
     private final float knockbackResistance;
     private final Item repairItem;
 
-    private ModOreArmorMaterial(String _name, int _maxDamageFactor, int[] _damageReductionAmountArray, int _enchantability, SoundEvent _soundEvent, float _toughness, float _knockbackResistance, Item _repairItem) {
+    private ModOreArmorMaterials(String _name, int _maxDamageFactor, int[] _damageReductionAmountArray, int _enchantability, SoundEvent _soundEvent, float _toughness, float _knockbackResistance, Item _repairItem) {
         name = _name;
         maxDamageFactor = _maxDamageFactor;
         damageReductionAmountArray = _damageReductionAmountArray;
