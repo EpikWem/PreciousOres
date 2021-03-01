@@ -3,7 +3,7 @@ package com.epikwem.preciousores;
 import com.epikwem.preciousores.init.ModIngots;
 import com.epikwem.preciousores.init.ModOreArmorMaterials;
 import com.epikwem.preciousores.init.ModOreBlockTiers;
-import com.epikwem.preciousores.init.ModOreItemTiers;
+import com.epikwem.preciousores.init.ModOreTools;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
@@ -99,8 +99,8 @@ public class Main
             LOGGER.info("HELLO from Register Item");
             for (final ModIngots modIngot : ModIngots.values())
                 modIngot.registerOreItems(_itemRegistryEvent);
-            for (final ModOreItemTiers modOreItemTier : ModOreItemTiers.values())
-                modOreItemTier.registerOreTools(_itemRegistryEvent);
+            for (final ModOreTools modOreTool : ModOreTools.values())
+                modOreTool.registerOreTools(_itemRegistryEvent);
             for (final ModOreArmorMaterials modOreArmorMaterial : ModOreArmorMaterials.values())
                 modOreArmorMaterial.registerOreArmors(_itemRegistryEvent);
             for (final Block block : ForgeRegistries.BLOCKS.getValues()) {

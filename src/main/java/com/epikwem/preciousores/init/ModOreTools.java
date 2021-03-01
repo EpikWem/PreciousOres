@@ -13,7 +13,7 @@ import net.minecraftforge.event.RegistryEvent;
 
 import static com.epikwem.preciousores.Main.setup;
 
-public enum ModOreItemTiers implements IItemTier {
+public enum ModOreTools implements IItemTier {
 
     SILVER (ModIngots.SILVER_INGOT,
             2,
@@ -32,7 +32,7 @@ public enum ModOreItemTiers implements IItemTier {
     private final Item repairItem;
     private final float attackSpeed;
 
-    ModOreItemTiers(final ModIngots _oreIngot, int _harvestLevel, int _maxUses, float _efficiency, int _attackDamage, int _enchantability, float _attackSpeed) {
+    ModOreTools(final ModIngots _oreIngot, int _harvestLevel, int _maxUses, float _efficiency, int _attackDamage, int _enchantability, float _attackSpeed) {
         oreName = _oreIngot.getOreName();
         harvestLevel = _harvestLevel;
         maxUses = _maxUses;
@@ -44,28 +44,14 @@ public enum ModOreItemTiers implements IItemTier {
     }
 
     public void registerOreTools(final RegistryEvent.Register<Item> _itemRegistryEvent) {
+        final Item.Properties properties = new Item.Properties().group(ItemGroup.TOOLS);
         _itemRegistryEvent.getRegistry().registerAll(
-                this.setupSword(),
-                this.setupTool(ToolType.PICKAXE),
-                this.setupTool(ToolType.AXE),
-                this.setupTool(ToolType.SHOVEL),
-                this.setupTool(ToolType.HOE)
+            setup(oreName+"_sword", new SwordItem(this, 4, attackSpeed, new Item.Properties().group(ItemGroup.COMBAT)) ),
+            setup(oreName+"_pickaxe", new PickaxeItem(this, 6, 1.0f, properties) ),
+            setup(oreName+"_axe", new AxeItem(this, 6, 1.0f, properties) ),
+            setup(oreName+"_shovel", new ShovelItem(this, 6, 1.0f, properties) ),
+            setup(oreName+"_hoe", new HoeItem(this, 6, 1.0f, properties) )
         );
-    }
-
-    private Item setupSword() {
-        return setup(oreName+"_sword", new SwordItem(this, 4, attackSpeed, new Item.Properties().group(ItemGroup.COMBAT)));
-    }
-
-    private Item setupTool(ToolType _toolType) {
-        if (_toolType.equals(ToolType.PICKAXE))
-            return setup(oreName+"_pickaxe", new PickaxeItem(this, 6, 1.0f, new Item.Properties().group(ItemGroup.TOOLS)));
-        else if (_toolType.equals(ToolType.AXE))
-            return setup(oreName+"_axe", new AxeItem(this, 6, 1.0f, new Item.Properties().group(ItemGroup.TOOLS)));
-        else if (_toolType.equals(ToolType.SHOVEL))
-            return setup(oreName+"_shovel", new ShovelItem(this, 6, 1.0f, new Item.Properties().group(ItemGroup.TOOLS)));
-        else
-            return setup(oreName+"_hoe", new HoeItem(this, 6, 1.0f, new Item.Properties().group(ItemGroup.TOOLS)));
     }
 
     @Override
