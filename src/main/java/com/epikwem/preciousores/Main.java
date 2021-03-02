@@ -51,7 +51,7 @@ public class Main
     }
 
     private void setupEvent(final FMLCommonSetupEvent _event) {
-        ModOreGeneration.generateOres();
+        ModOreGeneration.registerOresOnSetup();
         LOGGER.info("HELLO FROM PREINIT");
     }
 
