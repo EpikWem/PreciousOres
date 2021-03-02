@@ -89,17 +89,20 @@ public class Main
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> _blockRegistryEvent) {
             LOGGER.info("HELLO from Register Block");
-            setup("silver_block", ModBlocks.SILVER_BLOCK);
-            setup("silver_ore", ModBlocks.SILVER_ORE);
+            _blockRegistryEvent.getRegistry().registerAll(
+                setup("silver_block", ModBlocks.SILVER_BLOCK),
+                setup("silver_ore", ModBlocks.SILVER_ORE)
+            );
             LOGGER.info("Block registering FINISHED");
         }
 
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> _itemRegistryEvent) {
             LOGGER.info("HELLO from Register Item");
-            setup("silver_ingot", ModItems.SILVER_INGOT);
-            setup("silver_nugget", ModItems.SILVER_NUGGET);
-
+            _itemRegistryEvent.getRegistry().registerAll(
+                setup("silver_ingot", ModItems.SILVER_INGOT),
+                setup("silver_nugget", ModItems.SILVER_NUGGET)
+            );
             LOGGER.info("  Tools:");
             for (final ModOreTools modOreTool : ModOreTools.values())
                 modOreTool.registerOreTools(_itemRegistryEvent);
