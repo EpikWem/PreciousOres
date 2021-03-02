@@ -1,4 +1,7 @@
 
+// https://youtu.be/ZLBrtsW10eA
+// fill ~-20 ~-10 ~-20 ~20 ~8 ~20 air replace minecraft:netherrack
+
 package com.epikwem.preciousores.world.generation;
 
 import com.epikwem.preciousores.Main;
@@ -12,6 +15,8 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig.FillerBlockType;
+import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -20,41 +25,45 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 
-@Mod.EventBusSubscriber
+
 public class ModOreGeneration {
-//https://youtu.be/ZLBrtsW10eA
 
-    public static void registerOresOnSetup() {
-        NETHER_ORES.add( modNetherOreFeature(ModOreBlocks.SILVER, 8, 128, 24) );
-    }
-
-    private static final ArrayList<ConfiguredFeature<?,?>> NETHER_ORES = new ArrayList<ConfiguredFeature<?,?>>();
-
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void generateOres(BiomeLoadingEvent _event) {
-        BiomeGenerationSettingsBuilder generation = _event.getGeneration();
+    public static void generateOres(final BiomeLoadingEvent _event) {
         if (_event.getCategory().equals(Biome.Category.NETHER)) {
-            for (ConfiguredFeature<?,?> ore : NETHER_ORES) {
-                if (ore != null)
-                    generation.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
-            }
+            registerNetherOre(_event.getGeneration(), ModOreBlocks.SILVER, 8, 128, 16);
+        } if ( !(_event.getCategory().equals(Biome.Category.NETHER)) && !(_event.getCategory().equals(Biome.Category.NETHER)) ) {
+            registerOverworldOre(_event.getGeneration(), ModOreBlocks.SILVER, 8, 128, 16);
         }
-
     }
 
-    private static <FC extends IFeatureConfig> ConfiguredFeature<FC,?> registerOre(String _name, ConfiguredFeature<FC,?> _feature) {
-        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, Main.MODID+":"+_name, _feature);
-    }
-
-    private static ConfiguredFeature<?,?> modNetherOreFeature(final ModOreBlocks _oreBlock, int _veinSize, int _maxHeight, int _frequency) {
-        return Feature.ORE.withConfiguration(
+    private static void registerNetherOre(BiomeGenerationSettingsBuilder _settings, final ModOreBlocks _oreBlock, int _veinSize, int _maxHeight, int _frequency) {
+        _settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
+            Feature.ORE.withConfiguration(
                 new OreFeatureConfig(
-                        FillerBlockType.NETHERRACK,
+                    FillerBlockType.NETHERRACK,
+                    _oreBlock.getOreBlock().getDefaultState(),
+                    _veinSize )
+            ).withPlacement(
+                Placement.RANGE.configure(new TopSolidRangeConfig(4, 0, _maxHeight))
+            ).func_242731_b(
+                _frequency
+            ).square()
+        );
+    }
+
+    private static void registerOverworldOre(BiomeGenerationSettingsBuilder _settings, final ModOreBlocks _oreBlock, int _veinSize, int _maxHeight, int _frequency) {
+        _settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
+            Feature.ORE.withConfiguration(
+                new OreFeatureConfig(
+                        FillerBlockType.BASE_STONE_OVERWORLD,
                         _oreBlock.getOreBlock().getDefaultState(),
                         _veinSize )
-        ).range(_maxHeight) // Maximum Spawn Height
-                .square()
-                .func_242731_b(_frequency); // Chunk Spawn Frequency
+            ).withPlacement(
+                Placement.RANGE.configure(new TopSolidRangeConfig(4, 0, _maxHeight))
+            ).func_242731_b(
+                _frequency
+            ).square()
+        );
     }
 
 }
