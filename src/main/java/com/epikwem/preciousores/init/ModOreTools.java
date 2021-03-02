@@ -15,12 +15,13 @@ import static com.epikwem.preciousores.Main.setup;
 
 public enum ModOreTools implements IItemTier {
 
-    SILVER (ModIngots.SILVER_INGOT,
+    SILVER ("silver",
             2,
             1254,
             0.0f,
             2,
             0,
+            ModItems.SILVER_INGOT,
             1.0f);
 
     private final String oreName;
@@ -32,14 +33,14 @@ public enum ModOreTools implements IItemTier {
     private final Item repairItem;
     private final float attackSpeed;
 
-    ModOreTools(final ModIngots _oreIngot, int _harvestLevel, int _maxUses, float _efficiency, int _attackDamage, int _enchantability, float _attackSpeed) {
-        oreName = _oreIngot.getOreName();
+    ModOreTools(String _oreName, int _harvestLevel, int _maxUses, float _efficiency, int _attackDamage, int _enchantability, final Item _repairItem, float _attackSpeed) {
+        oreName = _oreName;
         harvestLevel = _harvestLevel;
         maxUses = _maxUses;
         efficiency = _efficiency;
         attackDamage = _attackDamage;
         enchantability = _enchantability;
-        repairItem = _oreIngot.getItem();
+        repairItem = _repairItem;
         attackSpeed = _attackSpeed;
     }
 

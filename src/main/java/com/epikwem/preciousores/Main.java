@@ -1,12 +1,11 @@
 package com.epikwem.preciousores;
 
+import com.epikwem.preciousores.init.ModBlocks;
+import com.epikwem.preciousores.init.ModItems;
 import com.epikwem.preciousores.world.generation.ModOreGeneration;
-import com.epikwem.preciousores.init.ModIngots;
 import com.epikwem.preciousores.init.ModOreArmorMaterials;
-import com.epikwem.preciousores.init.ModOreBlocks;
 import com.epikwem.preciousores.init.ModOreTools;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -90,21 +89,25 @@ public class Main
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> _blockRegistryEvent) {
             LOGGER.info("HELLO from Register Block");
-            for (final ModOreBlocks modOreBlockTier : ModOreBlocks.values())
-                modOreBlockTier.registerOreBlocks(_blockRegistryEvent);
+            setup("silver_block", ModBlocks.SILVER_BLOCK);
+            setup("silver_ore", ModBlocks.SILVER_ORE);
             LOGGER.info("Block registering FINISHED");
         }
 
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> _itemRegistryEvent) {
             LOGGER.info("HELLO from Register Item");
-            for (final ModIngots modIngot : ModIngots.values())
-                modIngot.registerOreItems(_itemRegistryEvent);
+            setup("silver_ingot", ModItems.SILVER_INGOT);
+            setup("silver_nugget", ModItems.SILVER_NUGGET);
+
+            LOGGER.info("  Tools:");
             for (final ModOreTools modOreTool : ModOreTools.values())
                 modOreTool.registerOreTools(_itemRegistryEvent);
+            LOGGER.info("  Armors:");
             for (final ModOreArmorMaterials modOreArmorMaterial : ModOreArmorMaterials.values())
                 modOreArmorMaterial.registerOreArmors(_itemRegistryEvent);
-            LOGGER.info("=====================================");
+
+            LOGGER.info("  BlockItems:");
             for (final Block block : ForgeRegistries.BLOCKS.getValues()) {
                 if (block.getRegistryName().getNamespace().equals(Main.MODID)) {
                     final Item.Properties properties = new Item.Properties().group(ItemGroup.BUILDING_BLOCKS);
@@ -113,6 +116,7 @@ public class Main
                     );
                 }
             }
+
             LOGGER.info("Item registering FINISHED");
         }
 
