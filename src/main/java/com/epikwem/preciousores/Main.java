@@ -3,8 +3,8 @@ package com.epikwem.preciousores;
 import com.epikwem.preciousores.init.ModBlocks;
 import com.epikwem.preciousores.init.ModItems;
 import com.epikwem.preciousores.world.generation.ModOreGeneration;
-import com.epikwem.preciousores.init.ModOreArmorMaterials;
-import com.epikwem.preciousores.init.ModOreTools;
+import com.epikwem.preciousores.init.ModArmorMaterials;
+import com.epikwem.preciousores.init.ModTools;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -104,10 +104,10 @@ public class Main
                 setup("silver_nugget", ModItems.SILVER_NUGGET)
             );
             LOGGER.info("  Tools:");
-            for (final ModOreTools modOreTool : ModOreTools.values())
+            for (final ModTools modOreTool : ModTools.values())
                 modOreTool.registerOreTools(_itemRegistryEvent);
             LOGGER.info("  Armors:");
-            for (final ModOreArmorMaterials modOreArmorMaterial : ModOreArmorMaterials.values())
+            for (final ModArmorMaterials modOreArmorMaterial : ModArmorMaterials.values())
                 modOreArmorMaterial.registerOreArmors(_itemRegistryEvent);
 
             LOGGER.info("  BlockItems:");

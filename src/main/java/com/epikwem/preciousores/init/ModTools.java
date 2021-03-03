@@ -1,19 +1,13 @@
 
 package com.epikwem.preciousores.init;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.OreBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 
 import static com.epikwem.preciousores.Main.setup;
 
-public enum ModOreTools implements IItemTier {
+public enum ModTools implements IItemTier {
 
     SILVER ("silver",
             2,
@@ -33,7 +27,7 @@ public enum ModOreTools implements IItemTier {
     private final Item repairItem;
     private final float attackSpeed;
 
-    ModOreTools(String _oreName, int _harvestLevel, int _maxUses, float _efficiency, int _attackDamage, int _enchantability, final Item _repairItem, float _attackSpeed) {
+    ModTools(String _oreName, int _harvestLevel, int _maxUses, float _efficiency, int _attackDamage, int _enchantability, final Item _repairItem, float _attackSpeed) {
         oreName = _oreName;
         harvestLevel = _harvestLevel;
         maxUses = _maxUses;
@@ -83,6 +77,10 @@ public enum ModOreTools implements IItemTier {
     @Override
     public Ingredient getRepairMaterial() {
         return Ingredient.fromItems(repairItem);
+    }
+
+    public float getAttackSpeed() {
+        return attackSpeed;
     }
 
 }

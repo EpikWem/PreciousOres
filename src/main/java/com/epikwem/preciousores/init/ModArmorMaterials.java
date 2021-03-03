@@ -13,7 +13,7 @@ import net.minecraftforge.event.RegistryEvent;
 
 import static com.epikwem.preciousores.Main.setup;
 
-public enum ModOreArmorMaterials implements IArmorMaterial {
+public enum ModArmorMaterials implements IArmorMaterial {
 
     SILVER( "silver",
             18,
@@ -35,7 +35,7 @@ public enum ModOreArmorMaterials implements IArmorMaterial {
     private final float knockbackResistance;
     private final Item repairItem;
 
-    ModOreArmorMaterials(String _oreName, int _maxDamageFactor, int[] _damageReductionAmountArray, int _enchantability, SoundEvent _soundEvent, float _toughness, float _knockbackResistance, final Item _repairItem) {
+    ModArmorMaterials(String _oreName, int _maxDamageFactor, int[] _damageReductionAmountArray, int _enchantability, SoundEvent _soundEvent, float _toughness, float _knockbackResistance, final Item _repairItem) {
         oreName = _oreName;
         maxDamageFactor = _maxDamageFactor;
         damageReductionAmountArray = _damageReductionAmountArray;
