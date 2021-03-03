@@ -1,5 +1,5 @@
-
 {
+
   "block.preciousores.silver_ore": "Silver Ore",
   "block.preciousores.silver_block": "Block of Silver",
 
@@ -9,6 +9,13 @@
   "item.preciousores.silver_pickaxe": "Silver Pickaxe",
   "item.preciousores.silver_axe": "Silver Axe",
   "item.preciousores.silver_shovel": "Silver Shovel",
-  "item.preciousores.silver_hoe": "Silver Hoe"
+  "item.preciousores.silver_hoe": "Silver Hoe",
+
+  "item.preciousores.silver_helmet": "Silver Helmet",
+  "item.preciousores.silver_chestplate": "Silver Chestplate",
+  "item.preciousores.silver_leggings": "Silver Leggings",
+  "item.preciousores.silver_boots": "Silver Boots",
+
+  "tips.smite_tooltip": "boost: Smite"
 
 }

@@ -61,13 +61,11 @@ public class SilverSword extends SwordItem {
         return _stack;
     }
 
-    /*@Override
+    @Override
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack _stack, @Nullable World _world, List<ITextComponent> _tooltip, ITooltipFlag _flag) {
         super.addInformation(_stack, _world, _tooltip, _flag);
-        _tooltip.addAll(
-            (new TranslationTextComponent("tips.smite_tooltip")).applyTextStyle(TextFormatting.GREEN);
-        );
-    }*/
+        _tooltip.add( new TranslationTextComponent("tips.smite_tooltip")  );
+    }
 
 }

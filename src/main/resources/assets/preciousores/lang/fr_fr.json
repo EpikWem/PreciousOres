@@ -1,5 +1,5 @@
-
 {
+
   "block.preciousores.silver_ore": "Minerai d'Argent",
   "block.preciousores.silver_block": "Bloc d'Argent",
 
@@ -9,6 +9,13 @@
   "item.preciousores.silver_pickaxe": "Pioche en Argent",
   "item.preciousores.silver_axe": "Hache en Argent",
   "item.preciousores.silver_shovel": "Pelle en Argent",
-  "item.preciousores.silver_hoe": "Houe en Argent"
+  "item.preciousores.silver_hoe": "Houe en Argent",
+
+  "item.preciousores.silver_helmet": "Casque en Argent",
+  "item.preciousores.silver_chestplate": "Plastron en Argent",
+  "item.preciousores.silver_leggings": "Jambières en Argent",
+  "item.preciousores.silver_boots": "Bottes en Argent",
+
+  "tips.smite_tooltip": "boost: Châtiment"
 
 }
