@@ -10,7 +10,14 @@ public class ModBlocks {
 
     // blazing gold
     public static final Block BLAZINGGOLD_BLOCK = ModBlock(MaterialColor.GOLD, 3.0f, 12.0f);
-    public static final OreBlock BLAZINGGOLD_ORE = ModOreBlock(MaterialColor.GOLD, 6.0f, 3.0f, 2);
+    public static final OreBlock BLAZINGGOLD_ORE = new OreBlock(Block.Properties
+        .create(Material.ROCK, MaterialColor.GOLD)
+        .hardnessAndResistance(6.0f)
+        .sound(SoundType.STONE)
+        .harvestLevel(2)
+        .harvestTool(ToolType.PICKAXE)
+        .setLightLevel((state) -> { return 3; })
+    );
 
     // shining gold
     public static final Block SHININGGOLD_BLOCK = new OreBlock(Block.Properties
@@ -35,7 +42,13 @@ public class ModBlocks {
     public static final OreBlock SILVER_ANDESITE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
     public static final OreBlock SILVER_DIORITE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
     public static final OreBlock SILVER_GRANITE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
-    public static final OreBlock SILVER_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 7.0f, 3.0f, 2);
+    public static final OreBlock SILVER_ORE = new OreBlock( Block.Properties
+            .create(Material.ROCK, MaterialColor.LIGHT_GRAY)
+            .sound(SoundType.NETHER_ORE)
+            .hardnessAndResistance(7.0f, 3.0f)
+            .harvestLevel(2)
+            .harvestTool(ToolType.PICKAXE)
+    );
     public static final OreBlock SILVER_STONE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
 
 
@@ -53,7 +66,7 @@ public class ModBlocks {
     private static OreBlock ModOreBlock(MaterialColor _color, float _hardness, float _resistance, int _harvestLevel) {
         return new OreBlock( Block.Properties
                 .create(Material.ROCK, _color)
-                .sound(SoundType.NETHER_ORE)
+                .sound(SoundType.STONE)
                 .hardnessAndResistance(_hardness, _resistance)
                 .harvestLevel(_harvestLevel)
                 .harvestTool(ToolType.PICKAXE)
