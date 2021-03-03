@@ -108,6 +108,9 @@ public class Main
         public static void onItemsRegistry(final RegistryEvent.Register<Item> _itemRegistryEvent) {
             LOGGER.info("HELLO from Register Item");
             _itemRegistryEvent.getRegistry().registerAll(
+                setup("blazinggold_ingot", ModItems.BLAZINGGOLD_INGOT),
+                setup("blazinggold_nugget", ModItems.BLAZINGGOLD_NUGGET),
+                setup("shininggold_crystal", ModItems.SHININGGOLD_CRYSTAL),
                 setup("silver_ingot", ModItems.SILVER_INGOT),
                 setup("silver_nugget", ModItems.SILVER_NUGGET)
             );

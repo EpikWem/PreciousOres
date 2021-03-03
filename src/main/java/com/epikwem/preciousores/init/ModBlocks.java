@@ -13,8 +13,22 @@ public class ModBlocks {
     public static final OreBlock BLAZINGGOLD_ORE = ModOreBlock(MaterialColor.GOLD, 6.0f, 3.0f, 2);
 
     // shining gold
-    public static final Block SHININGGOLD_BLOCK = ModBlock(MaterialColor.GOLD, 2.0f, 1.0f);
-    public static final OreBlock SHININGGOLD_ORE = ModOreBlock(MaterialColor.GOLD, 5.0f, 2.0f, 2);
+    public static final Block SHININGGOLD_BLOCK = new OreBlock(Block.Properties
+        .create(Material.GLASS, MaterialColor.GOLD)
+        .hardnessAndResistance(0.5f)
+        .sound(SoundType.GLASS)
+        .harvestLevel(0)
+        .harvestTool(ToolType.PICKAXE)
+        .setLightLevel((state) -> { return 15; })
+    );
+    public static final OreBlock SHININGGOLD_ORE = new OreBlock(Block.Properties
+        .create(Material.GLASS, MaterialColor.GOLD)
+        .hardnessAndResistance(0.4f)
+        .sound(SoundType.GLASS)
+        .harvestLevel(2)
+        .harvestTool(ToolType.PICKAXE)
+        .setLightLevel((state) -> { return 14; })
+    );
 
     // silver
     public static final Block SILVER_BLOCK = ModBlock(MaterialColor.LIGHT_GRAY, 3.0f, 6.0f);
