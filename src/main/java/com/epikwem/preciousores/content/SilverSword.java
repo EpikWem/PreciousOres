@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class SilverSword extends SwordItem {
 
-    private SilverSword() {
+    public SilverSword() {
         super(ModTools.SILVER, 4, ModTools.SILVER.getAttackSpeed(), new Item.Properties().group(ItemGroup.COMBAT));
     }
 

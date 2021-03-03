@@ -1,6 +1,7 @@
 
 package com.epikwem.preciousores.init;
 
+import com.epikwem.preciousores.content.SilverSword;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.event.RegistryEvent;
@@ -41,12 +42,16 @@ public enum ModTools implements IItemTier {
     public void registerOreTools(final RegistryEvent.Register<Item> _itemRegistryEvent) {
         final Item.Properties properties = new Item.Properties().group(ItemGroup.TOOLS);
         _itemRegistryEvent.getRegistry().registerAll(
-            setup(oreName+"_sword", new SwordItem(this, 4, attackSpeed, new Item.Properties().group(ItemGroup.COMBAT)) ),
             setup(oreName+"_pickaxe", new PickaxeItem(this, 6, 1.0f, properties) ),
             setup(oreName+"_axe", new AxeItem(this, 6, 1.0f, properties) ),
             setup(oreName+"_shovel", new ShovelItem(this, 6, 1.0f, properties) ),
             setup(oreName+"_hoe", new HoeItem(this, 6, 1.0f, properties) )
         );
+        _itemRegistryEvent.getRegistry().register( setup(oreName+"_sword", (
+            this.equals(SILVER) ?
+            new SilverSword() :
+            new SwordItem(this, 4, attackSpeed, new Item.Properties().group(ItemGroup.COMBAT))
+        ) ) );
     }
 
     @Override
