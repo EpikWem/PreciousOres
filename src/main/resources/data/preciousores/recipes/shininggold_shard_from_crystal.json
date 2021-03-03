@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "shininggold_shard",
+	"pattern": [
+		"###",
+		"###",
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "preciousores:shininggold_crystal"
+		}
+	},
+	"result": {
+		"item": "preciousores:shininggold_shard"
+	}
+}

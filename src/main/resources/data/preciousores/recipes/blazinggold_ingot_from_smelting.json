@@ -1,9 +1,9 @@
 {
 	"type": "minecraft:smelting",
 	"ingredient": {
-		"item": "preciousores:silver_ore"
+		"item": "preciousores:blazinggold_ore"
 	},
-	"result": "preciousores:silver_ingot",
+	"result": "preciousores:blazinggold_ingot",
 	"experience": 0.7,
 	"cookingtime": 200
 }

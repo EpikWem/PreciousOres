@@ -11,6 +11,7 @@ public class ModItems {
             BLAZINGGOLD_INGOT = ModItem(),
             BLAZINGGOLD_NUGGET = ModItem(),
             SHININGGOLD_CRYSTAL = ModItem(),
+            SHININGGOLD_SHARD = ModItem(),
             SILVER_INGOT = ModItem(),
             SILVER_NUGGET = ModItem();
 

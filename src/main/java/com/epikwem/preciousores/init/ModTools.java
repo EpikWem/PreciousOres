@@ -25,7 +25,7 @@ public enum ModTools implements IItemTier {
              0.0f,
              2,
              0,
-             ModItems.SHININGGOLD_CRYSTAL,
+             ModItems.SHININGGOLD_SHARD,
             1.0f),
 
     SILVER ("silver",

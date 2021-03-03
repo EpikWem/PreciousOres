@@ -31,7 +31,7 @@ public enum ModArmorMaterials implements IArmorMaterial {
             SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
             1.0F,
             0.0F,
-            ModItems.SHININGGOLD_CRYSTAL ),
+            ModItems.SHININGGOLD_SHARD ),
 
     SILVER( "silver",
             18,

@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "preciousores:blazinggold_ingot"
+		}
+	],
+	"result": {
+		"item": "preciousores:blazinggold_nugget",
+		"count": 9
+	}
+}

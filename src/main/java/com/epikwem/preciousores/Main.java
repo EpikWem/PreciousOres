@@ -111,6 +111,7 @@ public class Main
                 setup("blazinggold_ingot", ModItems.BLAZINGGOLD_INGOT),
                 setup("blazinggold_nugget", ModItems.BLAZINGGOLD_NUGGET),
                 setup("shininggold_crystal", ModItems.SHININGGOLD_CRYSTAL),
+                setup("shininggold_shard", ModItems.SHININGGOLD_SHARD),
                 setup("silver_ingot", ModItems.SILVER_INGOT),
                 setup("silver_nugget", ModItems.SILVER_NUGGET)
             );
