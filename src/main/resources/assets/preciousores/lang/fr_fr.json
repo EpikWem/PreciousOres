@@ -1,5 +1,14 @@
 {
 
+  "block.preciousores.blazinggold_block": "Bloc d'Or Flamboyant",
+  "block.preciousores.blazinggold_ingot": "Lingot d'Or Flamboyant",
+  "block.preciousores.blazinggold_nugget": "Pépite d'Or Flamboyant",
+  "block.preciousores.blazinggold_ore": "Minerai d'Or Flamboyant",
+
+  "block.preciousores.shininggold_block": "Bloc d'Or Brillant",
+  "block.preciousores.shininggold_crystal": "Crystal d'Or Brillant",
+  "block.preciousores.shininggold_ore": "Minerai d'Or Brillant",
+
   "block.preciousores.silver_ore": "Minerai d'Argent",
   "block.preciousores.silver_andesite_ore": "Minerai d'Argent",
   "block.preciousores.silver_diorite_ore": "Minerai d'Argent",

@@ -1,9 +1,12 @@
 {
 
   "block.preciousores.blazinggold_block": "Blazing Gold Block",
+  "block.preciousores.blazinggold_ingot": "Blazing Gold Ingot",
+  "block.preciousores.blazinggold_nugget": "Blazing Gold Nugget",
   "block.preciousores.blazinggold_ore": "Blazing Gold Ore",
 
   "block.preciousores.shininggold_block": "Shining Gold Block",
+  "block.preciousores.shininggold_crystal": "Shining Gold Crystal",
   "block.preciousores.shininggold_ore": "Shining Gold Ore",
 
   "block.preciousores.silver_block": "Block of Silver",
