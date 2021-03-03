@@ -9,7 +9,11 @@ import net.minecraftforge.common.ToolType;
 public class ModBlocks {
 
     public static final Block SILVER_BLOCK = ModBlock(MaterialColor.LIGHT_GRAY, 3.0f, 6.0f);
-    public static final OreBlock SILVER_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
+    public static final OreBlock SILVER_ANDESITE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
+    public static final OreBlock SILVER_DIORITE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
+    public static final OreBlock SILVER_GRANITE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
+    public static final OreBlock SILVER_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 7.0f, 3.0f, 2);
+    public static final OreBlock SILVER_STONE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
 
 
 

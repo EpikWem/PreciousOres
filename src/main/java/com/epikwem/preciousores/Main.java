@@ -91,7 +91,9 @@ public class Main
             LOGGER.info("HELLO from Register Block");
             _blockRegistryEvent.getRegistry().registerAll(
                 setup("silver_block", ModBlocks.SILVER_BLOCK),
-                setup("silver_ore", ModBlocks.SILVER_ORE)
+                setup("silver_granite_ore", ModBlocks.SILVER_GRANITE_ORE),
+                setup("silver_ore", ModBlocks.SILVER_ORE),
+                setup("silver_stone_ore", ModBlocks.SILVER_STONE_ORE)
             );
             LOGGER.info("Block registering FINISHED");
         }

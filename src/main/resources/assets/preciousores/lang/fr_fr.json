@@ -1,6 +1,10 @@
 {
 
   "block.preciousores.silver_ore": "Minerai d'Argent",
+  "block.preciousores.silver_andesite_ore": "Minerai d'Argent",
+  "block.preciousores.silver_diorite_ore": "Minerai d'Argent",
+  "block.preciousores.silver_granite_ore": "Minerai d'Argent",
+  "block.preciousores.silver_stone_ore": "Minerai d'Argent",
   "block.preciousores.silver_block": "Bloc d'Argent",
 
   "item.preciousores.silver_ingot": "Lingot d'Argent",
@@ -16,6 +20,6 @@
   "item.preciousores.silver_leggings": "Jambières en Argent",
   "item.preciousores.silver_boots": "Bottes en Argent",
 
-  "tips.smite_tooltip": "boost: Châtiment"
+  "tips.smite_tooltip": "+Châtiment"
 
 }

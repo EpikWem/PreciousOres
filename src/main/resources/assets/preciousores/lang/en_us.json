@@ -1,7 +1,11 @@
 {
 
-  "block.preciousores.silver_ore": "Silver Ore",
   "block.preciousores.silver_block": "Block of Silver",
+  "block.preciousores.silver_andesite_ore": "Silver Ore",
+  "block.preciousores.silver_diorite_ore": "Silver Ore",
+  "block.preciousores.silver_granite_ore": "Silver Ore",
+  "block.preciousores.silver_ore": "Silver Ore",
+  "block.preciousores.silver_stone_ore": "Silver Ore",
 
   "item.preciousores.silver_ingot": "Silver Ingot",
   "item.preciousores.silver_nugget": "Silver Nugget",
@@ -16,6 +20,6 @@
   "item.preciousores.silver_leggings": "Silver Leggings",
   "item.preciousores.silver_boots": "Silver Boots",
 
-  "tips.smite_tooltip": "boost: Smite"
+  "tips.smite_tooltip": "+Smite"
 
 }
