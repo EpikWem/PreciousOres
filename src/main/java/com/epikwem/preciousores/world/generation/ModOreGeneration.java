@@ -23,6 +23,8 @@ public class ModOreGeneration {
     public static void generateOres(final BiomeLoadingEvent _event) {
         // if in NETHER
         if (_event.getCategory().equals(Biome.Category.NETHER)) {
+            registerOre(_event.getGeneration(), ModBlocks.BLAZINGGOLD_ORE, 6, 64, 8, ModFillerBlockTypes.MAGMA_BLOCK);
+            registerOre(_event.getGeneration(), ModBlocks.SHININGGOLD_ORE, 4, 128, 8, ModFillerBlockTypes.GLOWSTONE);
             registerOre(_event.getGeneration(), ModBlocks.SILVER_ORE, 5, 128, 6, FillerBlockType.NETHERRACK);
         }
         // if in OVERWORLD
