@@ -8,6 +8,9 @@ import net.minecraft.item.Items;
 public class ModItems {
 
     public static final Item
+            BLAZINGGOLD_INGOT = ModItem(),
+            BLAZINGGOLD_NUGGET = ModItem(),
+            SHININGGOLD_CRYSTAL = ModItem(),
             SILVER_INGOT = ModItem(),
             SILVER_NUGGET = ModItem();
 

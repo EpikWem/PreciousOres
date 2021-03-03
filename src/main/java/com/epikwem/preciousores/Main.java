@@ -90,7 +90,13 @@ public class Main
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> _blockRegistryEvent) {
             LOGGER.info("HELLO from Register Block");
             _blockRegistryEvent.getRegistry().registerAll(
+                setup("blazinggold_block", ModBlocks.BLAZINGGOLD_BLOCK),
+                setup("blazinggold_ore", ModBlocks.BLAZINGGOLD_ORE),
+                setup("shininggold_block", ModBlocks.SHININGGOLD_BLOCK),
+                setup("shininggold_ore", ModBlocks.SHININGGOLD_ORE),
+                setup("silver_andesite_ore", ModBlocks.SILVER_ANDESITE_ORE),
                 setup("silver_block", ModBlocks.SILVER_BLOCK),
+                setup("silver_diorite_ore", ModBlocks.SILVER_DIORITE_ORE),
                 setup("silver_granite_ore", ModBlocks.SILVER_GRANITE_ORE),
                 setup("silver_ore", ModBlocks.SILVER_ORE),
                 setup("silver_stone_ore", ModBlocks.SILVER_STONE_ORE)

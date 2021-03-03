@@ -10,6 +10,24 @@ import static com.epikwem.preciousores.Main.setup;
 
 public enum ModTools implements IItemTier {
 
+    BLAZINGGOLD ("blazinggold",
+            2,
+            1125,
+            0.0f,
+            2,
+            0,
+            ModItems.BLAZINGGOLD_INGOT,
+            1.0f),
+
+    SHININGGOLD ("shininggold",
+             2,
+             876,
+             0.0f,
+             2,
+             0,
+             ModItems.SHININGGOLD_CRYSTAL,
+            1.0f),
+
     SILVER ("silver",
             2,
             1254,
@@ -18,6 +36,8 @@ public enum ModTools implements IItemTier {
             0,
             ModItems.SILVER_INGOT,
             1.0f);
+
+
 
     private final String oreName;
     private final int harvestLevel;

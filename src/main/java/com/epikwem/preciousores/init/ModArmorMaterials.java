@@ -15,14 +15,34 @@ import static com.epikwem.preciousores.Main.setup;
 
 public enum ModArmorMaterials implements IArmorMaterial {
 
+    BLAZINGGOLD( "blazinggold",
+            16,
+            new int[]{3, 5, 6, 3},
+            10,
+            SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
+            0.0F,
+            0.0F,
+            ModItems.BLAZINGGOLD_INGOT ),
+
+    SHININGGOLD( "shininggold",
+            10,
+            new int[]{2, 4, 5, 2},
+            16,
+            SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
+            1.0F,
+            0.0F,
+            ModItems.SHININGGOLD_CRYSTAL ),
+
     SILVER( "silver",
             18,
-            new int[]{2, 5, 6, 2},
+            new int[]{3, 5, 6, 3},
             20,
             SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
             1.0F,
             0.0F,
             ModItems.SILVER_INGOT );
+
+
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
 
