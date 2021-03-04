@@ -20,17 +20,26 @@ public enum ModArmorMaterials implements IArmorMaterial {
             new int[]{3, 5, 6, 3},
             10,
             SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
-            0.0F,
-            0.0F,
+            0.0f,
+            0.0f,
             ModItems.BLAZINGGOLD_INGOT ),
+
+    OBSIDIANITE( "obsidianite",
+            24,
+            new int[]{4, 6, 8, 4},
+            6,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            1.0f,
+            1.5f,
+            ModItems.OBSIDIANITE ),
 
     SHININGGOLD( "shininggold",
             10,
             new int[]{2, 4, 5, 2},
             16,
-            SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
-            1.0F,
-            0.0F,
+            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
+            1.0f,
+            0.0f,
             ModItems.SHININGGOLD_SHARD ),
 
     SILVER( "silver",
@@ -38,8 +47,8 @@ public enum ModArmorMaterials implements IArmorMaterial {
             new int[]{3, 5, 6, 3},
             20,
             SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
-            1.0F,
-            0.0F,
+            1.0f,
+            0.0f,
             ModItems.SILVER_INGOT );
 
 

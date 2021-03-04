@@ -7,13 +7,13 @@
 	],
 	"key": {
 		"#": {
-			"item": "preciousores:silver_ingot"
+			"item": "preciousores:obsidianite"
 		},
 		"I": {
 			"item": "minecraft:stick"
 		}
 	},
 	"result": {
-		"item": "preciousores:silver_shovel"
+		"item": "preciousores:obsidianite_shovel"
 	}
 }

@@ -92,6 +92,7 @@ public class Main
             _blockRegistryEvent.getRegistry().registerAll(
                 setup("blazinggold_block", ModBlocks.BLAZINGGOLD_BLOCK),
                 setup("blazinggold_ore", ModBlocks.BLAZINGGOLD_ORE),
+                setup("obsidianite_block", ModBlocks.OBSIDIANITE_BLOCK),
                 setup("shininggold_block", ModBlocks.SHININGGOLD_BLOCK),
                 setup("shininggold_ore", ModBlocks.SHININGGOLD_ORE),
                 setup("silver_andesite_ore", ModBlocks.SILVER_ANDESITE_ORE),
@@ -110,6 +111,7 @@ public class Main
             _itemRegistryEvent.getRegistry().registerAll(
                 setup("blazinggold_ingot", ModItems.BLAZINGGOLD_INGOT),
                 setup("blazinggold_nugget", ModItems.BLAZINGGOLD_NUGGET),
+                setup("obsidianite", ModItems.OBSIDIANITE),
                 setup("shininggold_crystal", ModItems.SHININGGOLD_CRYSTAL),
                 setup("shininggold_shard", ModItems.SHININGGOLD_SHARD),
                 setup("silver_ingot", ModItems.SILVER_INGOT),

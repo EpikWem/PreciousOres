@@ -16,8 +16,12 @@ public class ModBlocks {
         .sound(SoundType.STONE)
         .harvestLevel(2)
         .harvestTool(ToolType.PICKAXE)
+        .setRequiresTool()
         .setLightLevel((state) -> { return 3; })
     );
+
+    // obsidianite
+    public static final Block OBSIDIANITE_BLOCK = ModBlock(MaterialColor.OBSIDIAN, 60.0f, 1200.0f);
 
     // shining gold
     public static final Block SHININGGOLD_BLOCK = new OreBlock(Block.Properties
@@ -30,10 +34,11 @@ public class ModBlocks {
     );
     public static final OreBlock SHININGGOLD_ORE = new OreBlock(Block.Properties
         .create(Material.GLASS, MaterialColor.GOLD)
-        .hardnessAndResistance(0.4f)
+        .hardnessAndResistance(2.4f)
         .sound(SoundType.GLASS)
         .harvestLevel(2)
         .harvestTool(ToolType.PICKAXE)
+        .setRequiresTool()
         .setLightLevel((state) -> { return 14; })
     );
 
@@ -48,6 +53,7 @@ public class ModBlocks {
             .hardnessAndResistance(7.0f, 3.0f)
             .harvestLevel(2)
             .harvestTool(ToolType.PICKAXE)
+            .setRequiresTool()
     );
     public static final OreBlock SILVER_STONE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
 
@@ -70,6 +76,7 @@ public class ModBlocks {
                 .hardnessAndResistance(_hardness, _resistance)
                 .harvestLevel(_harvestLevel)
                 .harvestTool(ToolType.PICKAXE)
+                .setRequiresTool()
         );
     }
 

@@ -19,6 +19,15 @@ public enum ModTools implements IItemTier {
             ModItems.BLAZINGGOLD_INGOT,
             1.0f),
 
+    OBSIDIANITE ("obsidianite",
+            2,
+            1125,
+            0.0f,
+            2,
+            0,
+            ModItems.OBSIDIANITE,
+            1.0f),
+
     SHININGGOLD ("shininggold",
              2,
              876,
