@@ -12,7 +12,7 @@
 		},
 		"D": {
 			"item": "minecraft:diamond"
-		},
+		}
 	},
 	"result": {
 		"item": "preciousores:obsidianite"
