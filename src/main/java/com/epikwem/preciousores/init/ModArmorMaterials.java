@@ -1,128 +1,116 @@
 
 package com.epikwem.preciousores.init;
 
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
 
-import static com.epikwem.preciousores.Main.setup;
+public class ModArmorMaterials
+{
 
-public enum ModArmorMaterials implements IArmorMaterial {
+    public static final ModArmorMaterial
+            BLAZINGGOLD = new ModArmorMaterial("blazinggold",
+                    new int[]{3, 5, 6, 3},
+                    16,
+                    10,
+                    SoundEvents.ARMOR_EQUIP_GOLD,
+                    0.0f,
+                    0.0f,
+                    ModItems.BLAZINGGOLD_INGOT),
 
-    BLAZINGGOLD( "blazinggold",
-            16,
-            new int[]{3, 5, 6, 3},
-            10,
-            SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
-            0.0f,
-            0.0f,
-            ModItems.BLAZINGGOLD_INGOT ),
+            OBSIDIANITE = new ModArmorMaterial("obsidianite",
+                    new int[]{3, 5, 6, 3},
+                    35,
+                    6,
+                    SoundEvents.ARMOR_EQUIP_NETHERITE,
+                    1.0f,
+                    1.5f,
+                    ModItems.OBSIDIANITE),
 
-    OBSIDIANITE( "obsidianite",
-            24,
-            new int[]{4, 6, 8, 4},
-            6,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            1.0f,
-            1.5f,
-            ModItems.OBSIDIANITE ),
+            SHININGGOLD = new ModArmorMaterial("shininggold",
+                    new int[]{3, 5, 6, 3},
+                    9,
+                    16,
+                    SoundEvents.ARMOR_EQUIP_DIAMOND,
+                    1.0f,
+                    0.0f,
+                    ModItems.SHININGGOLD_SHARD),
 
-    SHININGGOLD( "shininggold",
-            10,
-            new int[]{2, 4, 5, 2},
-            16,
-            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            1.0f,
-            0.0f,
-            ModItems.SHININGGOLD_SHARD ),
+            SILVER = new ModArmorMaterial("silver",
+                    new int[]{3, 5, 6, 3},
+                    18,
+                    20,
+                    SoundEvents.ARMOR_EQUIP_IRON,
+                    1.0f,
+                    0.0f,
+                    ModItems.SILVER_INGOT);
 
-    SILVER( "silver",
-            18,
-            new int[]{3, 5, 6, 3},
-            20,
-            SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
-            1.0f,
-            0.0f,
-            ModItems.SILVER_INGOT );
+    private static class ModArmorMaterial implements ArmorMaterial
+    {
 
+        private final int[] defenses;
+        private final int durability_multiplier;
+        private final SoundEvent equip_sound;
+        private final Ingredient repair_ingredient;
+        private final String ore_name;
+        private final int ench_value;
+        private final float toughness;
+        private final float knockbackResistance;
 
+        private ModArmorMaterial(String ore_name, int[] defenses, int durability_multiplier, int ench_value, SoundEvent equip_sound, float toughness, float knockbackResistance, Item repair_item)
+        {
+            this.ore_name = ore_name;
+            this.defenses = defenses;
+            this.durability_multiplier = durability_multiplier;
+            this.ench_value = ench_value;
+            this.toughness = toughness;
+            this.knockbackResistance = knockbackResistance;
+            this.equip_sound = equip_sound;
+            this.repair_ingredient = Ingredient.of(repair_item);
+        }
 
-    private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
+        @Override
+        public int getDurabilityForSlot(EquipmentSlot slot) {
+            return (new int[]{13, 15, 16, 11})[slot.getIndex()] * durability_multiplier;
+        }
 
-    private final String oreName;
-    private final int maxDamageFactor;
-    private final int[] damageReductionAmountArray;
-    private final int enchantability;
-    private final SoundEvent soundEvent;
-    private final float toughness;
-    private final float knockbackResistance;
-    private final Item repairItem;
+        @Override
+        public int getDefenseForSlot(EquipmentSlot slot) {
+            return defenses[slot.getIndex()];
+        }
 
-    ModArmorMaterials(String _oreName, int _maxDamageFactor, int[] _damageReductionAmountArray, int _enchantability, SoundEvent _soundEvent, float _toughness, float _knockbackResistance, final Item _repairItem) {
-        oreName = _oreName;
-        maxDamageFactor = _maxDamageFactor;
-        damageReductionAmountArray = _damageReductionAmountArray;
-        enchantability = _enchantability;
-        soundEvent = _soundEvent;
-        toughness = _toughness;
-        knockbackResistance = _knockbackResistance;
-        repairItem = _repairItem;
-    }
+        @Override
+        public int getEnchantmentValue() {
+            return ench_value;
+        }
 
-    public void registerOreArmors(final RegistryEvent.Register<Item> _itemRegistryEvent) {
-        final Item.Properties properties = new Item.Properties().group(ItemGroup.COMBAT);
-        _itemRegistryEvent.getRegistry().registerAll(
-            setup(oreName+"_helmet", new ArmorItem(this, EquipmentSlotType.HEAD, properties)),
-            setup(oreName+"_chestplate", new ArmorItem(this, EquipmentSlotType.CHEST, properties)),
-            setup(oreName+"_leggings", new ArmorItem(this, EquipmentSlotType.LEGS, properties)),
-            setup(oreName+"_boots", new ArmorItem(this, EquipmentSlotType.FEET, properties))
-        );
-    }
+        @Override
+        public SoundEvent getEquipSound() {
+            return equip_sound;
+        }
 
-    @Override
-    public int getDurability(EquipmentSlotType slotIn) {
-        return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor;
-    }
+        @Override
+        public Ingredient getRepairIngredient() {
+            return repair_ingredient;
+        }
 
-    @Override
-    public int getDamageReductionAmount(EquipmentSlotType slotIn) {
-        return damageReductionAmountArray[slotIn.getIndex()];
-    }
+        @Override
+        public String getName() {
+            return ore_name;
+        }
 
-    @Override
-    public int getEnchantability() {
-        return enchantability;
-    }
+        @Override
+        public float getToughness() {
+            return toughness;
+        }
 
-    @Override
-    public SoundEvent getSoundEvent() {
-        return soundEvent;
-    }
-
-    @Override
-    public Ingredient getRepairMaterial() {
-        return Ingredient.fromItems(repairItem);
-    }
-
-    @Override
-    public String getName() {
-        return oreName;
-    }
-
-    @Override
-    public float getToughness() {
-        return toughness;
-    }
-
-    @Override
-    public float getKnockbackResistance() {
-        return knockbackResistance;
+        @Override
+        public float getKnockbackResistance() {
+            return knockbackResistance;
+        }
     }
 
 }
