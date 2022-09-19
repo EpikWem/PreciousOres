@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "blazinggold_ingot",
+	"ingredients": [
+		{
+			"item": "preciousores:blazinggold_block"
+		}
+	],
+	"result": {
+		"item": "preciousores:blazinggold_ingot",
+		"count": 9
+	}
+}

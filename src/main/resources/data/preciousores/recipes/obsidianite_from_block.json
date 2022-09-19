@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "obsidianite",
+	"ingredients": [
+		{
+			"item": "preciousores:obsidianite_block"
+		}
+	],
+	"result": {
+		"item": "preciousores:obsidianite",
+		"count": 9
+	}
+}

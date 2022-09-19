@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"#",
+		"#",
+		"I"
+	],
+	"key": {
+		"#": {
+			"item": "preciousores:shininggold_shard"
+		},
+		"I": {
+			"item": "minecraft:blaze_rod"
+		}
+	},
+	"result": {
+		"item": "preciousores:shininggold_sword"
+	}
+}

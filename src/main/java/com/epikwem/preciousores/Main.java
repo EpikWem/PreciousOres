@@ -1,9 +1,18 @@
 package com.epikwem.preciousores;
 
+import com.epikwem.preciousores.init.ModBlocks;
+import com.epikwem.preciousores.init.ModItems;
+import com.epikwem.preciousores.world.generation.ModOreGeneration;
+import com.epikwem.preciousores.init.ModArmorMaterials;
+import com.epikwem.preciousores.init.ModTools;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -13,6 +22,8 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,7 +38,7 @@ public class Main
 
     public Main() {
         // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupEvent);
         // Register the enqueueIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
@@ -37,13 +48,12 @@ public class Main
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, ModOreGeneration::generateOres);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
-        // some preinit code
+    private void setupEvent(final FMLCommonSetupEvent _event) {
         LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -73,13 +83,70 @@ public class Main
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
+
         @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
+        public static void onBlocksRegistry(final RegistryEvent.Register<Block> _blockRegistryEvent) {
             LOGGER.info("HELLO from Register Block");
+            _blockRegistryEvent.getRegistry().registerAll(
+                setup("blazinggold_block", ModBlocks.BLAZINGGOLD_BLOCK),
+                setup("blazinggold_ore", ModBlocks.BLAZINGGOLD_ORE),
+                setup("obsidianite_block", ModBlocks.OBSIDIANITE_BLOCK),
+                setup("shininggold_block", ModBlocks.SHININGGOLD_BLOCK),
+                setup("shininggold_ore", ModBlocks.SHININGGOLD_ORE),
+                setup("silver_andesite_ore", ModBlocks.SILVER_ANDESITE_ORE),
+                setup("silver_block", ModBlocks.SILVER_BLOCK),
+                setup("silver_diorite_ore", ModBlocks.SILVER_DIORITE_ORE),
+                setup("silver_granite_ore", ModBlocks.SILVER_GRANITE_ORE),
+                setup("silver_ore", ModBlocks.SILVER_ORE),
+                setup("silver_stone_ore", ModBlocks.SILVER_STONE_ORE)
+            );
             LOGGER.info("Block registering FINISHED");
         }
+
+        @SubscribeEvent
+        public static void onItemsRegistry(final RegistryEvent.Register<Item> _itemRegistryEvent) {
+            LOGGER.info("HELLO from Register Item");
+            _itemRegistryEvent.getRegistry().registerAll(
+                setup("blazinggold_ingot", ModItems.BLAZINGGOLD_INGOT),
+                setup("blazinggold_nugget", ModItems.BLAZINGGOLD_NUGGET),
+                setup("obsidianite", ModItems.OBSIDIANITE),
+                setup("shininggold_crystal", ModItems.SHININGGOLD_CRYSTAL),
+                setup("shininggold_shard", ModItems.SHININGGOLD_SHARD),
+                setup("silver_ingot", ModItems.SILVER_INGOT),
+                setup("silver_nugget", ModItems.SILVER_NUGGET)
+            );
+            LOGGER.info("  Tools:");
+            for (final ModTools modOreTool : ModTools.values())
+                modOreTool.registerOreTools(_itemRegistryEvent);
+            LOGGER.info("  Armors:");
+            for (final ModArmorMaterials modOreArmorMaterial : ModArmorMaterials.values())
+                modOreArmorMaterial.registerOreArmors(_itemRegistryEvent);
+
+            LOGGER.info("  BlockItems:");
+            for (final Block block : ForgeRegistries.BLOCKS.getValues()) {
+                if (block.getRegistryName().getNamespace().equals(Main.MODID)) {
+                    final Item.Properties properties = new Item.Properties().group(ItemGroup.BUILDING_BLOCKS);
+                    _itemRegistryEvent.getRegistry().register(
+                        setup( block.getRegistryName(), new BlockItem(block, properties) )
+                    );
+                }
+            }
+
+            LOGGER.info("Item registering FINISHED");
+        }
+
+    } // end of RegistryEvent class
+
+    // to register an entry (block, item...)
+    public static <T extends IForgeRegistryEntry<T>> T setup(final String _name, final T _entry) {
+        return setup(new ResourceLocation(Main.MODID, _name), _entry);
     }
+
+    private static <T extends IForgeRegistryEntry<T>> T setup(final ResourceLocation _registryName, final T _entry) {
+        LOGGER.info("    setup("+ _registryName+ ")");
+        return _entry.setRegistryName(_registryName);
+    }
+
 }

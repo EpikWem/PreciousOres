@@ -1,0 +1,36 @@
+{
+
+  "block.preciousores.blazinggold_block": "Bloc d'Or Flamboyant",
+  "block.preciousores.blazinggold_ingot": "Lingot d'Or Flamboyant",
+  "block.preciousores.blazinggold_nugget": "Pépite d'Or Flamboyant",
+  "block.preciousores.blazinggold_ore": "Minerai d'Or Flamboyant",
+
+  "block.preciousores.obsidianite_block": "Bloc d'Obsidianite",
+  "item.preciousores.obsidianite": "Obsidianite",
+
+  "block.preciousores.shininggold_block": "Bloc d'Or Brillant",
+  "item.preciousores.shininggold_crystal": "Cristal d'Or Brillant",
+  "block.preciousores.shininggold_ore": "Minerai d'Or Brillant",
+  "item.preciousores.shininggold_shard": "Morceau d'Or Brillant",
+
+  "block.preciousores.silver_ore": "Minerai d'Argent",
+  "block.preciousores.silver_andesite_ore": "Minerai d'Argent",
+  "block.preciousores.silver_diorite_ore": "Minerai d'Argent",
+  "block.preciousores.silver_granite_ore": "Minerai d'Argent",
+  "block.preciousores.silver_stone_ore": "Minerai d'Argent",
+  "block.preciousores.silver_block": "Bloc d'Argent",
+  "item.preciousores.silver_ingot": "Lingot d'Argent",
+  "item.preciousores.silver_nugget": "Pépite d'Argent",
+  "item.preciousores.silver_sword": "Epée en Argent",
+  "item.preciousores.silver_pickaxe": "Pioche en Argent",
+  "item.preciousores.silver_axe": "Hache en Argent",
+  "item.preciousores.silver_shovel": "Pelle en Argent",
+  "item.preciousores.silver_hoe": "Houe en Argent",
+  "item.preciousores.silver_helmet": "Casque en Argent",
+  "item.preciousores.silver_chestplate": "Plastron en Argent",
+  "item.preciousores.silver_leggings": "Jambières en Argent",
+  "item.preciousores.silver_boots": "Bottes en Argent",
+
+  "tips.smite_tooltip": "+Châtiment"
+
+}

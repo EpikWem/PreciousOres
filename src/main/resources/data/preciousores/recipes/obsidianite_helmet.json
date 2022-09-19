@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"###",
+		"# #",
+		"   "
+	],
+	"key": {
+		"#": {
+			"item": "preciousores:obsidianite"
+		}
+	},
+	"result": {
+		"item": "preciousores:obsidianite_helmet"
+	}
+}

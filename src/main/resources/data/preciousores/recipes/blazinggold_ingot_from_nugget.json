@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "blazinggold_ingot",
+	"pattern": [
+		"###",
+		"###",
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "preciousores:blazinggold_nugget"
+		}
+	},
+	"result": {
+		"item": "preciousores:blazinggold_ingot"
+	}
+}

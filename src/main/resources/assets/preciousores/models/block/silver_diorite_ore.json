@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "preciousores:block/silver_diorite_ore"
+	}
+}

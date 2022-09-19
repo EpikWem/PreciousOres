@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "obsidianite",
+	"pattern": [
+		"###",
+		"#D#",
+		"###"
+	],
+	"key": {
+		"#": {
+			"item": "minecraft:obsidian"
+		},
+		"D": {
+			"item": "minecraft:diamond"
+		}
+	},
+	"result": {
+		"item": "preciousores:obsidianite"
+	}
+}

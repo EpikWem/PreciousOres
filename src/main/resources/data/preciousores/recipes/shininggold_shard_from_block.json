@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "shininggold_shard",
+	"ingredients": [
+		{
+			"item": "preciousores:shininggold_block"
+		}
+	],
+	"result": {
+		"item": "preciousores:shininggold_shard",
+		"count": 9
+	}
+}
