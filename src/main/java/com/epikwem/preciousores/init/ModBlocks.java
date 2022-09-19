@@ -1,83 +1,52 @@
 
 package com.epikwem.preciousores.init;
 
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
-import net.minecraftforge.common.ToolType;
+import com.epikwem.preciousores.PreciousOres;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
-public class ModBlocks {
+public class ModBlocks
+{
 
-    // blazing gold
-    public static final Block BLAZINGGOLD_BLOCK = ModBlock(MaterialColor.GOLD, 3.0f, 12.0f);
-    public static final OreBlock BLAZINGGOLD_ORE = new OreBlock(Block.Properties
-        .create(Material.ROCK, MaterialColor.GOLD)
-        .hardnessAndResistance(6.0f)
-        .sound(SoundType.STONE)
-        .harvestLevel(2)
-        .harvestTool(ToolType.PICKAXE)
-        .setRequiresTool()
-        .setLightLevel((state) -> { return 3; })
-    );
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, PreciousOres.MOD_ID);
 
-    // obsidianite
-    public static final Block OBSIDIANITE_BLOCK = ModBlock(MaterialColor.OBSIDIAN, 60.0f, 1200.0f);
-
-    // shining gold
-    public static final Block SHININGGOLD_BLOCK = new OreBlock(Block.Properties
-        .create(Material.GLASS, MaterialColor.GOLD)
-        .hardnessAndResistance(0.5f)
-        .sound(SoundType.GLASS)
-        .harvestLevel(0)
-        .harvestTool(ToolType.PICKAXE)
-        .setLightLevel((state) -> { return 15; })
-    );
-    public static final OreBlock SHININGGOLD_ORE = new OreBlock(Block.Properties
-        .create(Material.GLASS, MaterialColor.GOLD)
-        .hardnessAndResistance(2.4f)
-        .sound(SoundType.GLASS)
-        .harvestLevel(2)
-        .harvestTool(ToolType.PICKAXE)
-        .setRequiresTool()
-        .setLightLevel((state) -> { return 14; })
-    );
+    public static final Block BLAZINGGOLD_BLOCK = registerBlock( "blazinggold_block",
+            new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.GOLD).strength(3.0f, 12.0f)));
+    public static final DropExperienceBlock BLAZINGGOLD_ORE = registerBlock( "blazinggold_ore",
+            new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NETHER).strength(6.0f, 6.0f).requiresCorrectToolForDrops().lightLevel((state) -> 3)));
+    public static final Block OBSIDIANITE_BLOCK = registerBlock("obsidianite_block",
+            new Block(BlockBehaviour.Properties.of(Material.HEAVY_METAL, MaterialColor.COLOR_BLACK).strength(60.0f, 1200.0f)));
+    public static final Block SHININGGOLD_BLOCK = registerBlock( "shininggold_block",
+            new Block(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.GOLD).strength(0.5f).sound(SoundType.GLASS).lightLevel((state) -> 15)));
+    public static final DropExperienceBlock SHININGGOLD_ORE = registerBlock("shininggold_ore",
+        new DropExperienceBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.GOLD).strength(2.4f).sound(SoundType.GLASS).requiresCorrectToolForDrops().lightLevel((state) -> 14), UniformInt.of(3, 6)));
 
     // silver
-    public static final Block SILVER_BLOCK = ModBlock(MaterialColor.LIGHT_GRAY, 3.0f, 6.0f);
-    public static final OreBlock SILVER_ANDESITE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
-    public static final OreBlock SILVER_DIORITE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
-    public static final OreBlock SILVER_GRANITE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
-    public static final OreBlock SILVER_ORE = new OreBlock( Block.Properties
-            .create(Material.ROCK, MaterialColor.LIGHT_GRAY)
-            .sound(SoundType.NETHER_ORE)
-            .hardnessAndResistance(7.0f, 3.0f)
-            .harvestLevel(2)
-            .harvestTool(ToolType.PICKAXE)
-            .setRequiresTool()
-    );
-    public static final OreBlock SILVER_STONE_ORE = ModOreBlock(MaterialColor.LIGHT_GRAY, 9.0f, 4.0f, 2);
+    public static final Block SILVER_BLOCK = registerBlock( "silver_block",
+            new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_GRAY).strength(3.0f, 6.0f)));
+    public static final DropExperienceBlock SILVER_ORE = registerBlock( "silver_ore",
+            new DropExperienceBlock( BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).sound(SoundType.NETHER_ORE).strength(7.0f, 3.0f).requiresCorrectToolForDrops()));
 
-
-
-    private static Block ModBlock(MaterialColor _color, float _hardness, float _resistance) {
-        return new Block( Block.Properties
-            .create(Material.IRON, _color)
-            .sound(SoundType.METAL)
-            .hardnessAndResistance(_hardness, _resistance)
-            .harvestLevel(0)
-            .harvestTool(ToolType.PICKAXE)
-        );
+    public static <B extends Block> B registerBlock(final String _name, final B _block)
+    {
+        BLOCKS.register(_name, () -> _block);
+        ModItems.registerBlockItem(_block);
+        PreciousOres.LOGGER.info("|========= Registered the Block: "+ _name);
+        return _block;
     }
 
-    private static OreBlock ModOreBlock(MaterialColor _color, float _hardness, float _resistance, int _harvestLevel) {
-        return new OreBlock( Block.Properties
-                .create(Material.ROCK, _color)
-                .sound(SoundType.STONE)
-                .hardnessAndResistance(_hardness, _resistance)
-                .harvestLevel(_harvestLevel)
-                .harvestTool(ToolType.PICKAXE)
-                .setRequiresTool()
-        );
+    public static void register(final IEventBus _event_bus)
+    {
+        BLOCKS.register(_event_bus);
     }
+
 
 }
