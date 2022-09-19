@@ -14,25 +14,25 @@ public class ModTiers
                     751,
                     2,
                     6,
-                    ModItems.BLAZINGGOLD_INGOT),
+                    ModItems.BLAZINGGOLD_INGOT.get()),
 
             OBSIDIANITE = new ModTier ("obsidianite",
                     1956,
                     3,
                     12,
-                    ModItems.OBSIDIANITE),
+                    ModItems.OBSIDIANITE.get()),
 
             SHININGGOLD = new ModTier ("shininggold",
                     472,
                      1,
                      24,
-                     ModItems.SHININGGOLD_SHARD),
+                     ModItems.SHININGGOLD_SHARD.get()),
 
             SILVER = new ModTier ("silver",
                     122,
                     2,
                     18,
-                    ModItems.SILVER_INGOT);
+                    ModItems.SILVER_INGOT.get());
 
     public static class ModTier implements Tier
     {

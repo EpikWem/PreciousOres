@@ -23,12 +23,12 @@ public class PreciousOres
 
     public PreciousOres()
     {
-        final IEventBus MOD_EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus MOD_EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModBlocks.register(MOD_EVENT_BUS);
         ModItems.register(MOD_EVENT_BUS);
-        ModConfiguredFeatures.register(MOD_EVENT_BUS);
-        ModPlacedFeatures.register(MOD_EVENT_BUS);
+        ModBlocks.register(MOD_EVENT_BUS);
+        //ModConfiguredFeatures.register(MOD_EVENT_BUS);
+        //ModPlacedFeatures.register(MOD_EVENT_BUS);
 
         MOD_EVENT_BUS.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -42,7 +42,6 @@ public class PreciousOres
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents
     {
-
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent _event)
         {

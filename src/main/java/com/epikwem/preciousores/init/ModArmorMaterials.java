@@ -19,7 +19,7 @@ public class ModArmorMaterials
                     SoundEvents.ARMOR_EQUIP_GOLD,
                     0.0f,
                     0.0f,
-                    ModItems.BLAZINGGOLD_INGOT),
+                    ModItems.BLAZINGGOLD_INGOT.get()),
 
             OBSIDIANITE = new ModArmorMaterial("obsidianite",
                     new int[]{3, 5, 6, 3},
@@ -28,7 +28,7 @@ public class ModArmorMaterials
                     SoundEvents.ARMOR_EQUIP_NETHERITE,
                     1.0f,
                     1.5f,
-                    ModItems.OBSIDIANITE),
+                    ModItems.OBSIDIANITE.get()),
 
             SHININGGOLD = new ModArmorMaterial("shininggold",
                     new int[]{3, 5, 6, 3},
@@ -37,7 +37,7 @@ public class ModArmorMaterials
                     SoundEvents.ARMOR_EQUIP_DIAMOND,
                     1.0f,
                     0.0f,
-                    ModItems.SHININGGOLD_SHARD),
+                    ModItems.SHININGGOLD_SHARD.get()),
 
             SILVER = new ModArmorMaterial("silver",
                     new int[]{3, 5, 6, 3},
@@ -46,7 +46,7 @@ public class ModArmorMaterials
                     SoundEvents.ARMOR_EQUIP_IRON,
                     1.0f,
                     0.0f,
-                    ModItems.SILVER_INGOT);
+                    ModItems.SILVER_INGOT.get());
 
     private static class ModArmorMaterial implements ArmorMaterial
     {

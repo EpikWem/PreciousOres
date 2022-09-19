@@ -29,9 +29,9 @@ public class ModConfiguredFeatures
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, PreciousOres.MOD_ID);
 
     private static final Supplier<List<OreConfiguration.TargetBlockState>>
-            BLAZINGGOLD_ORES = Suppliers.memoize(() -> List.of(OreConfiguration.target(ModOreFeatures.MAGMA_BLOCK, ModBlocks.BLAZINGGOLD_ORE.defaultBlockState()))),
-            SHININGGOLD_ORES = Suppliers.memoize(() -> List.of(OreConfiguration.target(ModOreFeatures.GLOWSTONE, ModBlocks.SHININGGOLD_ORE.defaultBlockState()))),
-            SILVER_ORES = Suppliers.memoize(() -> List.of(OreConfiguration.target(ModOreFeatures.BLACKSTONE, ModBlocks.SILVER_ORE.defaultBlockState())));
+            BLAZINGGOLD_ORES = Suppliers.memoize(() -> List.of(OreConfiguration.target(ModOreFeatures.MAGMA_BLOCK, ModBlocks.BLAZINGGOLD_ORE.get().defaultBlockState()))),
+            SHININGGOLD_ORES = Suppliers.memoize(() -> List.of(OreConfiguration.target(ModOreFeatures.GLOWSTONE, ModBlocks.SHININGGOLD_ORE.get().defaultBlockState()))),
+            SILVER_ORES = Suppliers.memoize(() -> List.of(OreConfiguration.target(ModOreFeatures.BLACKSTONE, ModBlocks.SILVER_ORE.get().defaultBlockState())));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>>
             BLAZINGGOLD_ORES_CONFIGURATION = CONFIGURED_FEATURES.register("blazinggold_ores", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(BLAZINGGOLD_ORES.get(), 7))),
